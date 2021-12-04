@@ -4,9 +4,7 @@ class Api::GoalsController < ApplicationController
 
     def create 
         bookclub_book = BookclubBook.find(params[:bookclub_book_id])
-        byebug
         goal = bookclub_book.goals.create(goal_params)
-byebug
         render json: goal, status: :created
     end
 
