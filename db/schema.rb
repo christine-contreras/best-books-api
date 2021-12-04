@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_182239) do
+ActiveRecord::Schema.define(version: 2021_12_04_201039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookclub_books", force: :cascade do |t|
+    t.bigint "bookclub_id", null: false
+    t.bigint "book_id", null: false
+    t.boolean "archived"
+    t.string "status"
+    t.string "suggested_by"
+    t.boolean "current"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_bookclub_books_on_book_id"
+    t.index ["bookclub_id"], name: "index_bookclub_books_on_bookclub_id"
+  end
+
+  create_table "bookclub_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "bookclub_id", null: false
+    t.boolean "isAdmin"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bookclub_id"], name: "index_bookclub_users_on_bookclub_id"
+    t.index ["user_id"], name: "index_bookclub_users_on_user_id"
+  end
+
+  create_table "bookclubs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "imageURL"
+    t.string "title"
+    t.string "series"
+    t.text "description"
+    t.integer "pages"
+    t.string "publicationDate"
+    t.text "genres", default: [], array: true
+    t.string "author"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -26,4 +68,8 @@ ActiveRecord::Schema.define(version: 2021_12_04_182239) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "bookclub_books", "bookclubs"
+  add_foreign_key "bookclub_books", "books"
+  add_foreign_key "bookclub_users", "bookclubs"
+  add_foreign_key "bookclub_users", "users"
 end
