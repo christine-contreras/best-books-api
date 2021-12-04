@@ -10,8 +10,7 @@ class Api::BookclubsController < ApplicationController
 
     def show 
         bookclub = @bookclub
-        # render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :ok
-        render json: bookclub, status: :ok
+        render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :ok
     end
 
     def create 
@@ -20,9 +19,9 @@ class Api::BookclubsController < ApplicationController
         bookclub_user = user.bookclub_users.find_by(bookclub_id: bookclub.id)
         bookclub_user.isAdmin = true
         bookclub_user.save
+
         
-        # render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :created
-        render json: bookclub, status: :created
+        render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :created
 
     end
 
@@ -62,9 +61,7 @@ class Api::BookclubsController < ApplicationController
             end
         end
 
-        # render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
-
-        render json: bookclub, status: :accepted
+        render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
     end
 
 
@@ -78,10 +75,8 @@ class Api::BookclubsController < ApplicationController
         end
 
         new_current_book.update(current: true)
-
-        # render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
-
-        render json: bookclub, status: :accepted
+        
+        render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
     end
 
     private 

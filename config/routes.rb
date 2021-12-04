@@ -18,11 +18,11 @@ Rails.application.routes.draw do
     
     resources :bookclub_books, only: [:index, :destroy, :update]
 
-    # resources :goals, only: [:show, :create, :update, :destroy]
+    resources :goals, only: [:show, :create, :update, :destroy]
 
-    # resources :guide_questions, only: [:show, :create, :update, :destroy]
+    resources :guide_questions, only: [:show, :create, :update, :destroy]
 
-    # resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     
   end
 
