@@ -33,7 +33,7 @@ rails s
 
 RoR uses port 3000 by default
 
-## Relationships within Database
+## Backend Relationships
 
 ```rb
                                                           :deadline
