@@ -8,7 +8,7 @@ class Api::BookclubsController < ApplicationController
         render json: bookclubs, status: :ok
     end
 
-    def show 
+    def show
         bookclub = @bookclub
         render json: bookclub, include:  ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :ok
     end
