@@ -2,9 +2,9 @@
 
 This API is a simple web API where you make CRUD calls to a server to organize a book clubs app.
 
-## Front-end Project Task Management Interface
+## Front-end Interface
 
-You can use this API in conjunction with my front-end project management app [see the repo](https://github.com/christine-contreras/project-bestbooks-client)
+You can use this API in conjunction with my front-end book club app [see the repo](https://github.com/christine-contreras/project-bestbooks-client)
 
 ## Technologies Used in API
 
