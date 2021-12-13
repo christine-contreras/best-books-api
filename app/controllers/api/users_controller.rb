@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
     def update 
         user = @current_user
         user.update(user_params)
-        render json: user, status: :accepted
+        render json: user, include: ['bookclubs', 'bookclubs.users', 'bookclubs.bookclub_books', 'bookclubs.bookclub_books.book', 'bookclubs.bookclub_books.goals', 'bookclubs.bookclub_books.guide_questions', 'bookclubs.bookclub_books.guide_questions.comments'], status: :accepted
     end
 
     def destroy
